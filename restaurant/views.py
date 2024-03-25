@@ -9,10 +9,7 @@ def user_registration(request):
             user = form.save(commit=False)
             user.password = make_password(form.cleaned_data['password'])
             user.save()
-            return redirect('home')  # O'zingizning bosh sahifangizga o'ting
-    else:
-        form = UserRegistrationForm()
-    return render(request, 'user_registration.html', {'form': form})
+
 
 def restaurant_registration(request):
     if request.method == 'POST':
@@ -21,7 +18,7 @@ def restaurant_registration(request):
             restaurant = form.save(commit=False)
             restaurant.password = make_password(form.cleaned_data['password'])
             restaurant.save()
-            return redirect('home')  # O'zingizning bosh sahifangizga o'ting
+            return redirect('home')
     else:
         form = RestaurantRegistrationForm()
-    return render(request, 'restaurant_registration.html', {'form': form})
+
